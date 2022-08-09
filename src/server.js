@@ -2,6 +2,7 @@ import http from "http";
 import WebSocket from "ws";
 import express from "express";
 
+const PORT = process.env.PORT || 4000;
 const app = express();
 
 app.set("view engine", "pug");
@@ -38,4 +39,4 @@ wss.on("connection", (socket) => {
   });
 });
 
-server.listen(3000, handleListen);
+server.listen(PORT, handleListen);
