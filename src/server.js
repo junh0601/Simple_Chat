@@ -11,7 +11,7 @@ app.use("/public", express.static(__dirname + "/public"));
 app.get("/", (_, res) => res.render("home"));
 app.get("/*", (_, res) => res.redirect("/"));
 
-const handleListen = () => console.log(`Listening on http://localhost:3000`);
+const handleListen = () => console.log(`Listening on http://localhost:${PORT}`);
 
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });

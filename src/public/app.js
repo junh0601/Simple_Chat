@@ -3,7 +3,7 @@ const msgForm = document.querySelector("#msg");
 const msgList = document.querySelector("#msgList");
 const nickForm = document.querySelector("#nickname");
 
-const socket = new WebSocket(`wss://${window.location.host}`);
+const socket = new WebSocket(`ws://${window.location.host}`);
 
 function sendMsg(type, payload) {
   const input = { type, payload };
