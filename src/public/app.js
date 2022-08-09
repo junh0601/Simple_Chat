@@ -39,8 +39,10 @@ socket.addEventListener("close", () => {
 const handleMsgSubmit = (event) => {
   event.preventDefault();
   const input = msgForm.querySelector("input");
-  socket.send(sendMsg("new_message", input.value));
-  input.value = "";
+  if(input.value !==""){
+    socket.send(sendMsg("new_message", input.value));
+    input.value = "";
+  }
 };
 
 const handleNickSubmit = (event) => {
