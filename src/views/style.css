@@ -1,0 +1,11 @@
+form:last-child {
+  display: flex;
+}
+
+#msg input:first-child {
+  width: 70vw;
+}
+
+li {
+  list-style: none;
+}
