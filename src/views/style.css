@@ -9,3 +9,8 @@ form:last-child {
 li {
   list-style: none;
 }
+
+
+#counter{
+  display: flex;
+}

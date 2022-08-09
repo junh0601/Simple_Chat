@@ -9,16 +9,20 @@ html(lang="en")
         style
             include ./style.css
     body
-        header
-            h1 Noom
         main
-            h2 Simple Chat System
+            h2 Tiny Talk 💬
+            div#counter
+                div 현재 유저 : 
+                div#count 
+                div 명
             form#nickname
-                <small>Your Nickname</small>
-                input(value="Anonymous",type="text", vplaceholder="input nickname")
-                input(type="submit", value="set nickname")
+                <small>닉네임</small>
+                input(value="익명",type="text", vplaceholder="닉네임을 입력하세요")
+                input(type="submit", value="설정")
             ul#msgList
             form#msg
-                input(type="text", placeholder="Send Message")
+                input(type="text", placeholder="메시지 보내기")
                 input(type="submit", value="send")
+            
+        footer &copy; github.com/junh0601
         script(src="/public/app.js") 

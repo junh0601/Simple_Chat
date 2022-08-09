@@ -2,8 +2,9 @@
 const msgForm = document.querySelector("#msg");
 const msgList = document.querySelector("#msgList");
 const nickForm = document.querySelector("#nickname");
+const count = document.querySelector("#count");
 
-const socket = new WebSocket(`wss://${window.location.host}`);
+const socket = new WebSocket(`ws://${window.location.host}`);
 
 function sendMsg(type, payload) {
   const input = { type, payload };
@@ -15,9 +16,20 @@ socket.addEventListener("open", () => {
 });
 
 socket.addEventListener("message", (message) => {
-  const aMsg = document.createElement("li");
-  aMsg.innerText = message.data;
-  msgList.appendChild(aMsg);
+  const parsedMsg = JSON.parse(message.data);
+  console.log(parsedMsg);
+  switch (parsedMsg.type){
+    case "chat":
+      const aMsg = document.createElement("li");
+      aMsg.innerText = parsedMsg.payload;
+      msgList.appendChild(aMsg);
+      break;
+    case "count":
+      count.innerText = parsedMsg.payload;
+      break;
+    default:
+  }
+  
 });
 
 socket.addEventListener("close", () => {
@@ -36,7 +48,7 @@ const handleNickSubmit = (event) => {
   const input = nickForm.querySelector("input");
   const btn = nickForm.querySelector("input:last-child");
   socket.send(sendMsg("nickname", input.value));
-  btn.value = "Set complete!!";
+  btn.value = "설정 완료";
 };
 
 msgForm.addEventListener("submit", handleMsgSubmit);
