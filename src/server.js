@@ -35,7 +35,7 @@ wss.on("connection", (socket) => {
         socket["nickname"] = parsedMsg.payload;
         break;
       default:
-    }
+    };
   });
 });
 
