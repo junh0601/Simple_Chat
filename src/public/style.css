@@ -1,0 +1,109 @@
+body {
+  background-color: #222;
+}
+
+header > h2 {
+  padding: 0;
+}
+
+main {
+  max-width: 700px;
+}
+
+.buttons {
+  margin: 10px;
+  padding: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 30px;
+  color: white;
+  background-color: blue;
+  border: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+nav {
+  margin-bottom: 0px;
+}
+
+hr {
+  margin: 0px;
+}
+
+li {
+  list-style: none;
+}
+
+#chatList {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  padding-bottom: 60px;
+}
+
+#chatList > div {
+  display: flex;
+  margin: 2px;
+}
+
+#chatList > div > div {
+  display: flex;
+  flex-direction: column;
+}
+
+#chatList > div > div > li {
+  display: inline;
+  background-color: black;
+  padding: 5px;
+  margin: 2px;
+  border-radius: 5px;
+}
+
+#chatList > .mychat > div > li {
+  background-color: yellow;
+  color: black;
+}
+
+#chatList > .mychat {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#chatList > .mychat > div {
+  display: flex;
+  align-items: flex-end;
+}
+
+#chatList > .sysChat {
+  display: flex;
+  justify-content: center;
+  background-color: none;
+}
+
+#chatList > .sysChat > div > li {
+  background-color: transparent;
+}
+
+#chatForm {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+  margin: 0;
+  padding: 5px;
+  background-color: rgba(0, 0, 0);
+  position: fixed;
+  bottom: 0;
+}
+
+#chatForm > input:first-child {
+  width: 60%;
+}
+
+#roomList > li {
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.4);
+}

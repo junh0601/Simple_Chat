@@ -4,25 +4,37 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Noom 
+        title Noom
         link(rel="stylesheet", href="https://unpkg.com/mvp.css")
-        style
-            include ./style.css
+        link(rel="stylesheet", href="/public/style.css")
     body
+        header 
+            h2 Simple Chat
         main
-            h2 Tiny Talk 💬
-            div#counter
-                div 현재 유저 : 
-                div#count 
-                div 명
-            form#nickname
-                <small>닉네임</small>
-                input(value="익명",type="text", vplaceholder="닉네임을 입력하세요")
-                input(type="submit", value="설정")
-            small &copy; 2022 github.com/junh0601
-            ul#msgList
-            form#msg
-                input(type="text", placeholder="메시지 보내기")
-                input(type="submit", value="✉️")
-            
+            nav(class="initial")
+                ul
+                    li#navRoom 방 만들기
+                    li#navName 이름 바꾸기
+            form#roomForm(class="hidden initial")
+                small 방 이름을 입력하세요
+                input(type="text" placeholder="방 이름 입력")
+                input(type="submit" value="Enter Room" class="buttons")
+            form#nameForm(class="hidden")
+                small 바꿀 이름을 입력하세요
+                input(type="text" placeholder="이름 입력")
+                input(type="submit" value="Rename" class="buttons")
+            div(class="initial")
+                form
+                    small 모든 방 목록
+                    ul#roomList
+            h1#currentRoom(class="initial") 현재 채팅방 : Main
+            button(type="button" id="chatClear" class="buttons") 지우기
+            button(type="button" id="exitBtn" class="buttons") 나가기
+            hr(class="initial")
+            ul#chatList(class="initial")
+            form#chatForm(class="initial")
+                input(type="text" placeholder="input chat")
+                input(type="submit" value="Chat" class="buttons")
+            div#bottom
+        script(src="/socket.io/socket.io.js") 
         script(src="/public/app.js") 
