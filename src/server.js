@@ -36,6 +36,7 @@ function publicRoom() {
 wsServer.on("connection", (socket) => {
   socket["nickname"] = "익명";
   console.log(`<${socket.nickname}>님이 연결됨 `);
+  wsServer.sockets.emit("message", "notice", socket.nickname, `${socket.nickname}님이 접속하셨습니다`);
 
   //onAny
   socket.onAny((e) => {
@@ -59,7 +60,7 @@ wsServer.on("connection", (socket) => {
         "message",
         "notice",
         socket.nickname,
-        `"${nameBefore}"님이 "${socket.nickname}으로 이름을 변경하였습니다"`
+        `"${nameBefore}"님이 "${socket.nickname}"으로 이름을 변경하였습니다"`
       );
   });
 
