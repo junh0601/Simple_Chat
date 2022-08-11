@@ -41,7 +41,7 @@ function enterRoom(room) {
 
 //===initial seq ===
 
-const initialRoom = "Main";
+const initialRoom = "메인";
 let roomName = initialRoom;
 let myName = "anun";
 roomForm.querySelector("input").value = initialRoom;
@@ -72,7 +72,7 @@ socket.on("room_changed", (r) => {
     li.innerText = `${r.room} (${r.users}명)`;
     roomList.appendChild(li).addEventListener("click", function () {
       if (roomName === r.room) {
-        paintMsg(`You're aleady in ${roomName}`, `color:orange;`, "sysChat");
+        paintMsg(`이미 ${roomName}방에 입장하셨습니다.`, `color:orange;`, "sysChat");
       } else {
         socket.emit("exit_room", roomName);
         enterRoom(r.room);
@@ -98,7 +98,7 @@ const handleNameSubmit = (e) => {
   const input = nameForm.querySelector("input");
   socket.emit("name_changed", roomName, input.value);
   paintMsg(
-    `Your name is changed : '${myName}' -> '${input.value}'`,
+    `이름 변경 완료 : '${myName}' -> '${input.value}'`,
     `color : skyblue;`,
     "sysChat"
   );
@@ -116,7 +116,7 @@ const handleRoomSubmit = (e) => {
 const handleExitBtn = (e) => {
   if (roomName === initialRoom) {
     paintMsg(
-      `You Can't leave '${initialRoom}' room.`,
+      `${initialRoom}방을 나갈 수 없습니다. `,
       `color:orange;`,
       "sysChat"
     );
