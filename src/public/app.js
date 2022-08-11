@@ -35,7 +35,7 @@ function enterRoom(room) {
   roomName = room;
   const currentRoom = document.querySelector("#currentRoom");
   currentRoom.innerText = `현재 채팅방 : #${roomName}`;
-  paintMsg(`#${room}방에 입장하셨습니다. `, `color:gray;`, "sysChat");
+  paintMsg(`#${room} 방에 입장하셨습니다. `, `color:gray;`, "sysChat");
   roomForm.classList.add("hidden");
 }
 
@@ -43,10 +43,10 @@ function enterRoom(room) {
 
 const initialRoom = "메인";
 let roomName = initialRoom;
-let myName = "anun";
+let myName = "익명";
 roomForm.querySelector("input").value = initialRoom;
 enterRoom(initialRoom);
-paintMsg(`'${myName}'님 안녕하세요.`,`color:gray;` , "sysChat");
+paintMsg(`'${myName}' 님 안녕하세요.`,`color:gray;` , "sysChat");
 //=== socket io events ===
 
 // on message
@@ -88,7 +88,7 @@ const handleChatSubmit = (e) => {
   const input = chatForm.querySelector("input");
   if (input.value !== "") {
     socket.emit("message", roomName, input.value);
-    paintMsg(input.value, "", "mychat", "you");
+    paintMsg(input.value, "", "mychat", `나(${myName})`);
     input.value = "";
   }
 };
@@ -116,13 +116,13 @@ const handleRoomSubmit = (e) => {
 const handleExitBtn = (e) => {
   if (roomName === initialRoom) {
     paintMsg(
-      `#${initialRoom}방을 나갈 수 없습니다. `,
+      `#${initialRoom} 방을 나갈 수 없습니다. `,
       `color:orange;`,
       "sysChat"
     );
   } else {
     socket.emit("exit_room", roomName);
-    paintMsg(`#${roomName}방을 나갑니다`, `color;orange;`);
+    paintMsg(`#${roomName} 방을 나갑니다`, `color;orange;`);
     enterRoom(initialRoom);
   }
 };

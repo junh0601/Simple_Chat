@@ -35,16 +35,16 @@ function publicRoom() {
 //wsServer
 wsServer.on("connection", (socket) => {
   socket["nickname"] = "익명";
-  console.log(`<${socket.nickname}> is connected!! `);
+  console.log(`<${socket.nickname}>님이 연결됨 `);
 
   //onAny
   socket.onAny((e) => {
-    console.log(`event accured : ${e}`);
+    console.log(`이벤트 발생 : ${e}`);
   });
 
   //on message
   socket.on("message", (room, msg) => {
-    console.log(`${room}/${socket.nickname} send msg : ${msg}`);
+    console.log(`${room}/${socket.nickname}님이 메시지 전송 : ${msg}`);
     socket.to(room).emit("message", "chat", socket.nickname, msg);
   });
 
@@ -59,13 +59,12 @@ wsServer.on("connection", (socket) => {
         "message",
         "notice",
         socket.nickname,
-        `"${nameBefore}" changed name to "${socket.nickname}"`
+        `"${nameBefore}"님이 "${socket.nickname}으로 이름을 변경하였습니다"`
       );
   });
 
   //on enter_room
   socket.on("enter_room", (room) => {
-    console.log(`'${socket.nickname}'님이 #${room}방에 입장하셨습니다.`);
     socket.join(room);
     wsServer.sockets.emit("room_changed", publicRoom());
     socket
@@ -74,7 +73,7 @@ wsServer.on("connection", (socket) => {
         "message",
         "notice",
         socket.nickname,
-        `${socket.nickname} enter the room "${room}"`
+        `${socket.nickname} 님이  #${room} 방에 입장하셨습니다.`
       );
   });
 
@@ -88,13 +87,13 @@ wsServer.on("connection", (socket) => {
         "message",
         "notice",
         socket.nickname,
-        `${socket.nickname} exit the room "${room}"`
+        `${socket.nickname}님이 #${room} 방을 나갔습니다`
       );
   });
 
   //on disconnected
   socket.on("disconnect", () => {
-    console.log(`<${socket.nickname}> is disconnected`);
+    console.log(`<${socket.nickname}>님 접속 종료`);
     wsServer.sockets.emit("room_changed", publicRoom());
   });
 });
