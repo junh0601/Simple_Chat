@@ -34,8 +34,8 @@ function enterRoom(room) {
   socket.emit("enter_room", room);
   roomName = room;
   const currentRoom = document.querySelector("#currentRoom");
-  currentRoom.innerText = `현재 채팅방 : ${roomName}`;
-  paintMsg(`${room}방에 입장하셨습니다. `, `color:gray;`, "sysChat");
+  currentRoom.innerText = `현재 채팅방 : #${roomName}`;
+  paintMsg(`#${room}방에 입장하셨습니다. `, `color:gray;`, "sysChat");
   roomForm.classList.add("hidden");
 }
 
@@ -69,10 +69,10 @@ socket.on("room_changed", (r) => {
   console.log(r);
   r.forEach((r) => {
     const li = document.createElement("li");
-    li.innerText = `${r.room} (${r.users}명)`;
+    li.innerText = `#${r.room} (${r.users}명)`;
     roomList.appendChild(li).addEventListener("click", function () {
       if (roomName === r.room) {
-        paintMsg(`이미 ${roomName}방에 입장하셨습니다.`, `color:orange;`, "sysChat");
+        paintMsg(`이미 #${roomName}방에 입장하셨습니다.`, `color:orange;`, "sysChat");
       } else {
         socket.emit("exit_room", roomName);
         enterRoom(r.room);
@@ -116,13 +116,13 @@ const handleRoomSubmit = (e) => {
 const handleExitBtn = (e) => {
   if (roomName === initialRoom) {
     paintMsg(
-      `${initialRoom}방을 나갈 수 없습니다. `,
+      `#${initialRoom}방을 나갈 수 없습니다. `,
       `color:orange;`,
       "sysChat"
     );
   } else {
     socket.emit("exit_room", roomName);
-    paintMsg(`exit Room ${roomName}`, `color;orange;`);
+    paintMsg(`#${roomName}방을 나갑니다`, `color;orange;`);
     enterRoom(initialRoom);
   }
 };

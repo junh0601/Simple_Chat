@@ -65,7 +65,7 @@ wsServer.on("connection", (socket) => {
 
   //on enter_room
   socket.on("enter_room", (room) => {
-    console.log(`'${socket.nickname}' enter the room /${room}`);
+    console.log(`'${socket.nickname}'님이 #${room}방에 입장하셨습니다.`);
     socket.join(room);
     wsServer.sockets.emit("room_changed", publicRoom());
     socket
