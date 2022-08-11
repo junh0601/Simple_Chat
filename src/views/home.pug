@@ -4,30 +4,30 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Noom
+        title Tiny Chat
         link(rel="stylesheet", href="https://unpkg.com/mvp.css")
         link(rel="stylesheet", href="/public/style.css")
     body
         main
             nav(class="initial")
                 h3 Tiny Chat
-                small &copy; 2022 github.com/junh0601
                 ul
                     li#navRoom 방 만들기
                     li#navName 이름 바꾸기
             
             form#roomForm(class="hidden initial")
-                small 방 이름을 입력하세요
-                input(type="text" placeholder="방 이름 입력")
-                input(type="submit" value="Enter Room" class="buttons")
+                small 채팅방의 이름을 입력하세요
+                input(type="text" placeholder="입력하세요")
+                input(type="submit" value="방 들어가기" class="buttons")
             form#nameForm(class="hidden")
-                small 바꿀 이름을 입력하세요
-                input(type="text" placeholder="이름 입력")
-                input(type="submit" value="Rename" class="buttons")
+                small 이름을 입력하세요
+                input(type="text" placeholder="입력하세요")
+                input(type="submit" value="바꾸기" class="buttons")
             div(class="initial")
                 form
                     small 모든 방 목록
                     ul#roomList
+                small &copy; 2022 github.com/junh0601
             h1#currentRoom(class="initial") 현재 채팅방 : 메인
             button(type="button" id="chatClear" class="buttons") 지우기
             button(type="button" id="exitBtn" class="buttons") 나가기
