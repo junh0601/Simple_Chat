@@ -107,3 +107,7 @@ li {
   padding: 5px;
   background-color: rgba(0, 0, 0, 0.4);
 }
+
+#nameForm, #roomForm{
+  margin-bottom: 20px;
+}
