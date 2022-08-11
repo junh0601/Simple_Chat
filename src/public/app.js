@@ -46,7 +46,6 @@ let roomName = initialRoom;
 let myName = "익명";
 roomForm.querySelector("input").value = initialRoom;
 enterRoom(initialRoom);
-paintMsg(`'${myName}' 님 안녕하세요.`,`color:gray;` , "sysChat");
 //=== socket io events ===
 
 // on message
