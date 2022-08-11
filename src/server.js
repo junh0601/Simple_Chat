@@ -94,7 +94,7 @@ wsServer.on("connection", (socket) => {
   //on disconnected
   socket.on("disconnect", () => {
     console.log(`<${socket.nickname}>님 접속 종료`);
-    wsServer.sockets.emit("room_changed", publicRoom());
+    wsServer.sockets.emit("message", "notice", socket.nickname, `${socket.nickname}님이 접속을 종료했습니다`);
   });
 });
 
