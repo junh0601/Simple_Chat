@@ -34,7 +34,7 @@ function publicRoom() {
 
 //wsServer
 wsServer.on("connection", (socket) => {
-  socket["nickname"] = "anan";
+  socket["nickname"] = "익명";
   console.log(`<${socket.nickname}> is connected!! `);
 
   //onAny
